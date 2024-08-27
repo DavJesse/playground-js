@@ -5,7 +5,7 @@
 // };
 
 // Create deep copies of person object to ensure mutability
-const clone1 = Json.parse(JSON.stringify(person));
+const clone1 = JSON.parse(JSON.stringify(person));
 const clone2 = JSON.parse(JSON.stringify(person));
 const samePerson = person;
 
