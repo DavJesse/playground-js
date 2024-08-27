@@ -1,8 +1,8 @@
-const person = {
-    name: 'Rick',
-    age: 77,
-    country: 'US',  
-};
+// const person = {
+//     name: 'Rick',
+//     age: 77,
+//     country: 'US',  
+// };
 
 // Create deep copies of person object to ensure mutability
 const clone1 = JSON.stringify(person);
