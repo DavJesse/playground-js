@@ -1,6 +1,6 @@
 // Declare functions
-const get = (key, sourceObject) => sourceObject[key];
-const set = (key, value, sourceObject) => sourceObject[key] = value;
+const get = (key) => sourceObject[key];
+const set = (key, value) => sourceObject[key] = value;
 
 // const person = {
 //     name: 'Jesse',
