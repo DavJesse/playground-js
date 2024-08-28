@@ -9,7 +9,7 @@ function dogYears(planet, age) {
         venus: 0.61519726,
         mars: 1.8808158,
         jupiter: 11.862615,
-        sartun: 29.447498,
+        saturn: 29.447498,
         uranus: 84.016846,
         neptune: 164.79132,
     }
@@ -26,5 +26,5 @@ function dogYears(planet, age) {
     return dogAge * 1
 }
 
-console.log(typeof dogYears('geaRth', 1000000000))
+console.log(typeof dogYears('eaRth', 1000000000))
 console.log(dogYears('jupiter', 1000000000))
