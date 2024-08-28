@@ -19,8 +19,8 @@ function dogYears(planet, age) {
     }
 
     // Convert to dog years
-    planetTime = (planets[planet] * 31557600);
-    dogAge = age/planetTime;
+    let planetTime = (planets[planet] * 31557600);
+    let dogAge = age/planetTime;
     dogAge = (dogAge * 7).toFixed(2);
 
     return dogAge
