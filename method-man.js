@@ -23,9 +23,9 @@ function whisper(str) {
 // Capitalizes first char
 function capitalize(str) {
     const firstChar = str[0].toUpperCase();
-    const restChars = str.slice(1)
-    return firstChar + restChars
-}
+    const restChars = str.slice(1).toLowerCase();
+    return firstChar + restChars;
+};
 
 // // Test Cases for 'toUpperCase' Method
 // console.assert('pouet'.toUpperCase() === 'POUET', 'Test Case 1 Failed: toUpperCase');
@@ -41,3 +41,4 @@ function capitalize(str) {
 
 // // Test Case for Joining an Array into a String without Separators
 // console.assert('hey-this-is-fun'.split('-').join('') === 'heythisisfun', 'Test Case 5 Failed: split and join without separator');
+console.log(capitalize('STR'))
