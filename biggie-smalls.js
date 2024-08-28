@@ -1,3 +1,3 @@
-const smalls = Number.MIN_VALUE; // Set to minimum value in JS
-const biggie = Number.MAX_VALUE; // Set to maximum value in JS
+const smalls = Infinity*-1; // Set to minimum value in JS
+const biggie = infinity; // Set to maximum value in JS
 
