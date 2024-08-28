@@ -23,8 +23,8 @@ function dogYears(planet, age) {
     let dogAge = age/planetTime;
     dogAge = (dogAge * 7).toFixed(2);
 
-    return dogAge + ''
+    return dogAge * 1
 }
 
-// console.log(dogYears('geaRth', 1000000000))
-// console.log(dogYears('jupiter', 1000000000))
+console.log(typeof dogYears('geaRth', 1000000000))
+console.log(dogYears('jupiter', 1000000000))
