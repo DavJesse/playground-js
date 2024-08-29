@@ -59,11 +59,6 @@ function divide(a, b) {
 // Iteratively subtract b from a to find the modulus
 function modulo(a, b) {
 
-    let sign = 1;
-    if ((a < 0 && b > 0) || (a > 0 && b < 0)) {
-        sign = -1
-    }
-
     if (a < 0) {
         a = Math.abs(a)
     }
@@ -74,13 +69,10 @@ function modulo(a, b) {
     while (a >= b) {
         a -= b;
     }
-    if (sign === -1) {
-        return -a;
-    } else {
+ 
         return a
-    }
 }
 
 console.log(multiply(-22, -123))
 console.log(divide(-123, 22))
-console.log(modulo(34, 78))
+console.log(modulo(123, -22))
