@@ -26,11 +26,6 @@ function multiply(a, b) {
 
 // Iteratively subtract b from a to divide a by b
 function divide(a, b) {
-    if (b > a) {
-        return 0;
-    };
-
-    let result = 0;
     let sign = 1;
     if ((a < 0 && b > 0) || (a > 0 && b < 0)) {
         sign = -1
@@ -42,6 +37,13 @@ function divide(a, b) {
     if (b < 0) {
         b = Math.abs(b);
     };
+
+    if (b > a) {
+        return 0;
+    };
+
+    let result = 0;
+    
 
     while (a >=  b) {
         a -= b;
@@ -82,6 +84,6 @@ function modulo(a, b) {
     }
 }
 
-// console.log(multiply(-22, -123))
-// console.log(divide(78, 34))
-// console.log(modulo(7, 3))
+console.log(multiply(-22, -123))
+console.log(divide(-123, 22))
+console.log(modulo(7, 3))
