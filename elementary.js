@@ -3,19 +3,23 @@ function multiply(a, b) {
     let result = 0;
     let sign = 1;
     if ((a < 0 && b > 0) || (a > 0 && b < 0)) {
-        sign *= -1
+        sign = -1
         if (a < 0) {
-            a *= -1
+            a = Math.abs(a)
         }
         if (b < 0) {
-            b *= -1
+            b = Math.abs(b)
         }
     }
     while (b > 0) {
         result += a;
         b--;
     }
-    return result*sign;
+    if (sign === -1) {
+        return -result;
+    } else {
+        return result
+    }
 };
 
 // Iteratively subtract b from a to divide a by b
