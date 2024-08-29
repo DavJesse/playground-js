@@ -4,13 +4,15 @@ function multiply(a, b) {
     let sign = 1;
     if ((a < 0 && b > 0) || (a > 0 && b < 0)) {
         sign = -1
-        if (a < 0) {
-            a = Math.abs(a)
-        }
-        if (b < 0) {
-            b = Math.abs(b)
-        }
     }
+
+    if (a < 0) {
+        a = Math.abs(a)
+    }
+    if (b < 0) {
+        b = Math.abs(b)
+    }
+    
     while (b > 0) {
         result += a;
         b--;
@@ -40,6 +42,6 @@ function modulo(a, b) {
     return a;
 }
 
-console.log(multiply(123, -22))
+console.log(multiply(-22, -123))
 console.log(divide(7, 3))
 console.log(modulo(7, 3))
