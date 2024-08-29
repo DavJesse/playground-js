@@ -1,17 +1,16 @@
-const is = {
-    num: (value) => typeof value === 'number' ? true : false,
-    nan: (value) => typeof value !== 'number' ? true : false,
-    str: (value) => typeof value === 'string' ? true : false,
-    bool: (value) => typeof value === 'boolean' ? true : false,
-    undef: (value) => typeof value === 'undefined' ? true : false,
-    def: (value) => typeof value !== 'undefined' ? true : false,
-    arr: (value) => typeof value === 'array' ? true : false,
-    obj: (value) => typeof value === 'object' && value !== null ? true : false,
-    fun: (value) => typeof value === 'function' ? true : false,
-    truthy: (value) => !!value,
-    falsy: (value) => !value
-}
-
+//const is = {}
+    is.num = (value) => typeof value === 'number' ? true : false,
+    is.nan = (value) => typeof value !== 'number' ? true : false,
+    is.str = (value) => typeof value === 'string' ? true : false,
+    is.bool = (value) => typeof value === 'boolean' ? true : false,
+    is.undef= (value) => typeof value === 'undefined' ? true : false,
+    is.def = (value) => typeof value !== 'undefined' ? true : false,
+    is.arr = (value) => typeof value === 'array' ? true : false,
+    is.obj = (value) => typeof value === 'object' && value !== null ? true : false,
+    is.fun = (value) => typeof value === 'function' ? true : false,
+    is.truthy = (value) => !!value,
+    is.falsy = (value) => !value
+ 
 console.log(is.num(5))
 console.log(is.nan('k'))
 console.log(is.str('t'))
