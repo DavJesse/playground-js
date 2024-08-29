@@ -29,13 +29,29 @@ function divide(a, b) {
     if (b > a) {
         return 0;
     };
-    
-    let result = 1;
+
+    let result = 0;
+    let sign = 1;
+    if ((a < 0 && b > 0) || (a > 0 && b < 0)) {
+        sign = -1
+    }
+
+    if (a < 0) {
+        a = Math.abs(a);
+    };
+    if (b < 0) {
+        b = Math.abs(b);
+    };
+
     while (a >=  b) {
         a -= b;
         result++;
     }
-    return result;
+    if (sign === -1) {
+        return -result;
+    } else {
+        return result
+    }
 };
 
 // Iteratively subtract b from a to find the modulus
@@ -44,12 +60,28 @@ function modulo(a, b) {
         return 0;
     };
 
+    let sign = 1;
+    if ((a < 0 && b > 0) || (a > 0 && b < 0)) {
+        sign = -1
+    }
+
+    if (a < 0) {
+        a = Math.abs(a)
+    }
+    if (b < 0) {
+        b = Math.abs(b)
+    }
+
     while (a >= b) {
         a -= b;
     }
-    return a;
+    if (sign === -1) {
+        return -a;
+    } else {
+        return a
+    }
 }
 
-console.log(multiply(-22, -123))
-console.log(divide(7, 3))
-console.log(modulo(7, 3))
+// console.log(multiply(-22, -123))
+// console.log(divide(78, 34))
+// console.log(modulo(7, 3))
