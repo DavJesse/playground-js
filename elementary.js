@@ -12,7 +12,7 @@ function multiply(a, b) {
     if (b < 0) {
         b = Math.abs(b)
     }
-    
+
     while (b > 0) {
         result += a;
         b--;
@@ -26,6 +26,10 @@ function multiply(a, b) {
 
 // Iteratively subtract b from a to divide a by b
 function divide(a, b) {
+    if (b > a) {
+        return 0;
+    };
+    
     let result = 1;
     while (a >=  b) {
         a -= b;
@@ -36,6 +40,10 @@ function divide(a, b) {
 
 // Iteratively subtract b from a to find the modulus
 function modulo(a, b) {
+    if (b > a) {
+        return 0;
+    };
+
     while (a >= b) {
         a -= b;
     }
