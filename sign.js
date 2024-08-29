@@ -24,7 +24,14 @@ function sign(num) {
     }
 };
 
+// Compares signs, returns 'true' if signs are the same
+const sameSign = (num1, num2) =>
+    sign(num1) === sign(num2) ? true : false;
+
 // Print to console
 // console.log(sign(5))
 // console.log(sign(-12))
 // console.log(sign(0))
+// console.log(sameSign(5, 10))
+// console.log(sameSign(-12, -8))
+// console.log(sameSign(0, 0))
