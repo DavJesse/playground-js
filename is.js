@@ -5,8 +5,8 @@
     is.bool = (value) => typeof value === 'boolean' ? true : false,
     is.undef= (value) => typeof value === 'undefined' ? true : false,
     is.def = (value) => typeof value !== 'undefined' ? true : false,
-    is.arr = (value) => typeof value === 'array' ? true : false,
-    is.obj = (value) => typeof value === 'object' && value !== null,
+    is.arr = (value) => Array.isArray(value),
+    is.obj = (value) => typeof value === 'object' && value !== null && !Array.isArray(value),
     is.fun = (value) => typeof value === 'function' ? true : false,
     is.truthy = (value) => !!value,
     is.falsy = (value) => !value
