@@ -5,7 +5,7 @@ const keepFirst = (str) => str.slice(0, 2);
 const keepLast = (str) => str.slice(str.length-2);
 
 function keepFirstLast(str) {
-    if (str.length > 2) {
+    if (str.length > 4) {
         return keepFirst(str) + keepLast(str)
     } else {
         return str
@@ -18,4 +18,4 @@ function keepFirstLast(str) {
 // console.log(cutFirstLast("Hello World"))
 // console.log(keepFirst("Hello World"))
 // console.log(keepLast("Hello World"))
- console.log(keepFirstLast('af'))
+// console.log(keepFirstLast('afd'))
