@@ -58,21 +58,28 @@ function divide(a, b) {
 
 // Iteratively subtract b from a to find the modulus
 function modulo(a, b) {
+let sign = 1
 
     if (a < 0) {
-        a = Math.abs(a)
-    }
+        a = Math.abs(a);
+        sign = -1;
+    };
+
     if (b < 0) {
-        b = Math.abs(b)
-    }
+        b = Math.abs(b);
+    };
 
     while (a >= b) {
         a -= b;
-    }
- 
-        return a
+    };
+
+ if (sign === -1) {
+     return -a;
+ } else {
+    return a;
+ };
 }
 
 console.log(multiply(-22, -123))
-console.log(divide(-123, 22))
+console.log(modulo(-123, 22))
 console.log(modulo(123, -22))
