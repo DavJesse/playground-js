@@ -35,7 +35,7 @@ function lastIndexOf(arr, el, startIndex=arr.length-1) {
             return i;
         };
 
-        if (i === arr.length -1) {
+        if (i === 0) {
             return -1;
         };
         i--;
@@ -71,4 +71,4 @@ function includes(arr, el, startIndex=0) {
 // console.log(includes(numbers, 2, 3))
 // console.log(includes(numbers, 2, 2))
 // console.log(includes(numbers, 5, -2))
-// console.log(includes(numbers, 2, -100))
+ console.log(lastIndexOf([1, 2, 3, 4, 5, 4, 3, 2, 1], 2))
