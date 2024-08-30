@@ -20,13 +20,13 @@ function indexOf(arr, el, startIndex=0) {
     };
 };
 
-function lastIndexOf(arr, el, startIndex=arr.length) {
+function lastIndexOf(arr, el, startIndex=arr.length-1) {
     let i = startIndex
 
     if (i < 0) {
         i += arr.length;
         if (i < 0) {
-            i = arr.length;
+            i = arr.length-1;
         };
     };
 
@@ -42,10 +42,33 @@ function lastIndexOf(arr, el, startIndex=arr.length) {
     };
 };
 
-const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+function includes(arr, el, startIndex=0) {
+    let i = startIndex;
 
-console.log(indexOf(beasts, 'bison'))
-console.log(indexOf(beasts, 'giraffe'))
-console.log(indexOf(beasts, 'bison', 2))
-console.log(indexOf(beasts, 'camel', -2))
-console.log(indexOf(beasts, 'camel', -100))
+    if (i < 0) {
+        i += arr.length;
+        if (i < 0) {
+            i = 0;
+        }
+    }
+
+    while (i < arr.length) {
+        if (arr[i] === el) {
+            return true;
+        }
+        if (i === arr.length-1) {
+            return false;
+        }
+        i++;
+    };
+};
+
+// const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+// const numbers = [2, 5, 9, 2];
+
+// console.log(includes(numbers, 2))
+// console.log(includes(numbers, 7))
+// console.log(includes(numbers, 2, 3))
+// console.log(includes(numbers, 2, 2))
+// console.log(includes(numbers, 5, -2))
+// console.log(includes(numbers, 2, -100))
