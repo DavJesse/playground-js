@@ -6,10 +6,6 @@ function slice(arr, start, end=arr.length) {
     } else {
         result = [];
     };
-
-    if (end < start) {
-        return result
-    }
     
     if (start < 0 || end < 0) {
         if (start < 0) {
@@ -28,7 +24,10 @@ function slice(arr, start, end=arr.length) {
             };
         };           
     };
-
+    
+    if (end < start) {
+        return result
+    };
 
     while (start < end) {
         result = result.concat(arr[start]);
@@ -42,4 +41,4 @@ function slice(arr, start, end=arr.length) {
 // console.log(slice(fruits, -1, -3))
 // console.log(slice(fruits, 3))
 // console.log(slice(fruits, -1, 1))
-// console.log(slice(fruits, 10))
+//  console.log(slice('abcdef', 0, -2))
