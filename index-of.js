@@ -20,6 +20,28 @@ function indexOf(arr, el, startIndex=0) {
     };
 };
 
+function lastIndexOf(arr, el, startIndex=arr.length) {
+    let i = startIndex
+
+    if (i < 0) {
+        i += arr.length;
+        if (i < 0) {
+            i = arr.length;
+        };
+    };
+
+    while (i >= 0) {
+        if (arr[i] === el) {
+            return i;
+        };
+
+        if (i === arr.length -1) {
+            return -1;
+        };
+        i--;
+    };
+};
+
 const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
 
 console.log(indexOf(beasts, 'bison'))
