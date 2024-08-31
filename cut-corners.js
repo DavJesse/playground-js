@@ -1,9 +1,9 @@
 function round(num) {
-    if (num === infinity) {
-        return infinity
+    if (num === Infinity) {
+        return Infinity
     }
-    if (num === -infinity) {
-        return -infinity
+    if (num === -Infinity) {
+        return -Infinity
     }
 let intPart = floor(num);
 let fracPart = num - intPart;
@@ -17,11 +17,11 @@ if (fracPart >= 0.5) {
 }
 
 function ceil(num) {
-    if (num === infinity) {
-        return infinity
+    if (num === Infinity) {
+        return Infinity
     }
-    if (num === -infinity) {
-        return -infinity
+    if (num === -Infinity) {
+        return -Infinity
     }
     let intPart = floor(num);
     let fracPart = num - intPart;
@@ -35,11 +35,11 @@ function ceil(num) {
 }
  
 function floor(num) {
-    if (num === infinity) {
-        return infinity
+    if (num === Infinity) {
+        return Infinity
     }
-    if (num === -infinity) {
-        return -infinity
+    if (num === -Infinity) {
+        return -Infinity
     }
     let intPart = 0;
     let sign = num >= 0 ? 1 : -1;
@@ -58,11 +58,11 @@ function floor(num) {
 }
 
 function trunc(num) {
-    if (num === infinity) {
-        return infinity
+    if (num === Infinity) {
+        return Infinity
     }
-    if (num === -infinity) {
-        return -infinity
+    if (num === -Infinity) {
+        return -Infinity
     }
    let sign = num >= 0 ? 1 : -1;
    num = Math.abs(num);
@@ -71,7 +71,7 @@ function trunc(num) {
    return num * sign;
 }
 
-// const nums = [3.7, -3.7, 3.1, -3.1]
+// const nums = [3, -3, 3, -3, 0]
 // console.log(nums.map(round))
 // console.log(nums.map(floor))
 // console.log(nums.map(trunc))
