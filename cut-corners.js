@@ -1,4 +1,10 @@
 function round(num) {
+    if (num === infinity) {
+        return infinity
+    }
+    if (num === -infinity) {
+        return -infinity
+    }
 let intPart = floor(num);
 let fracPart = num - intPart;
 
@@ -11,6 +17,12 @@ if (fracPart >= 0.5) {
 }
 
 function ceil(num) {
+    if (num === infinity) {
+        return infinity
+    }
+    if (num === -infinity) {
+        return -infinity
+    }
     let intPart = floor(num);
     let fracPart = num - intPart;
     
@@ -23,6 +35,12 @@ function ceil(num) {
 }
  
 function floor(num) {
+    if (num === infinity) {
+        return infinity
+    }
+    if (num === -infinity) {
+        return -infinity
+    }
     let intPart = 0;
     let sign = num >= 0 ? 1 : -1;
     num = Math.abs(num)
@@ -40,6 +58,12 @@ function floor(num) {
 }
 
 function trunc(num) {
+    if (num === infinity) {
+        return infinity
+    }
+    if (num === -infinity) {
+        return -infinity
+    }
    let sign = num >= 0 ? 1 : -1;
    num = Math.abs(num);
    num = floor(num);
