@@ -10,6 +10,6 @@ function letterSpaceNumber(str) {
     return result
 }
 
-console.log(letterSpaceNumber("a 1,b 2!c 3 d4e 5f 6")); 
-// Output: ["a 1", "b 2", "c 3", "f 6"]
-console.log(letterSpaceNumber('example 1, example 20'))
+// console.log(letterSpaceNumber("a 1,b 2!c 3 d4e 5f 6")); 
+// // Output: ["a 1", "b 2", "c 3", "f 6"]
+// console.log(letterSpaceNumber('example 1, example 20'))
