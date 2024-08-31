@@ -1,9 +1,11 @@
 function sameAmount(str, regx1, regx2) {
-    if (regx1.test(str) && regx2.test(str)) {
-        return true
-    } else {
-        return false
-    }
+    const globalRegex1 = new RegExp(regx1, 'g');
+    const globalRegex2 = new RegExp(regx2, 'g');
+
+    const matches1 = (str.match(globalRegex1) || []).length;
+    const matches2 = (str.match(globalRegex2) || []).length;
+
+    return matches1 === matches2;
 }
 
-// console.log(sameAount('Hello world', /^[hH]ello/, /world$/ ))
+console.log(sameAmount('Hello world', /^[hH]ello/, /world$/ ))
