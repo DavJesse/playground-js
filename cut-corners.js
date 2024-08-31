@@ -47,11 +47,11 @@ function trunc(num) {
    return num * sign;
 }
 
-const nums = [3.7, -3.7, 3.1, -3.1]
-console.log(nums.map(round))
-console.log(nums.map(floor))
-console.log(nums.map(trunc))
-console.log(nums.map(ceil))
+// const nums = [3.7, -3.7, 3.1, -3.1]
+// console.log(nums.map(round))
+// console.log(nums.map(floor))
+// console.log(nums.map(trunc))
+// console.log(nums.map(ceil))
 
 // console.log(trunc(4.3));  // Output: 4
 // console.log(trunc(4.6));  // Output: 5
