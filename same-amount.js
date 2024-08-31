@@ -1,4 +1,4 @@
-function sameAount(str, regx1, regx2) {
+function sameAmount(str, regx1, regx2) {
     if (regx1.test(str) && regx2.test(str)) {
         return true
     } else {
