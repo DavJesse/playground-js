@@ -40,11 +40,11 @@ function trunc(num) {
     return num >= 0 ? floor(num) : -floor(-num);
 }
 
-const nums = [3, -3, 3, -3, 0]
-console.log(nums.map(round))
-console.log(nums.map(floor))
-console.log(nums.map(trunc))
-console.log(nums.map(ceil))
+// const nums = [3, -3, 3, -3, 0]
+// console.log(nums.map(round))
+// console.log(nums.map(floor))
+// console.log(nums.map(trunc))
+// console.log(nums.map(ceil))
 
 // console.log(trunc(4.3));  // Output: 4
 // console.log(trunc(4.6));  // Output: 5
