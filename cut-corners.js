@@ -13,7 +13,12 @@ function ceil(num) {
 
     let intPart = floor(num);
     
-   return intPart === num ? num : intPart + (num > 0 ? 1 : 0);
+    if (num > 0 && num > intPart) {
+        return intPart + 1;
+    } else if (num < 0 && num < intPart) {
+        return intPart;
+    }
+    return num;
 }
  
 function floor(num) {
