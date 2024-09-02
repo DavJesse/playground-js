@@ -2,7 +2,7 @@ function addWeek(date) {
 
     const days = [
         'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday',
-        'secondMonday', 'secondTeusday', 'secondWednesday', 'secondThursday', 'secondFriday', 'secondSaturday', 'secondSunday'
+        'secondMonday', 'secondTuesday', 'secondWednesday', 'secondThursday', 'secondFriday', 'secondSaturday', 'secondSunday'
     ];
 
     const epoch = new Date('0001-01-01');
