@@ -1,46 +1,31 @@
 function round(num) {
-    if (num === Infinity) {
-        return Infinity
+    if (num === Infinity || num === -Infinity) {
+        return num;
     }
-    if (num === -Infinity) {
-        return -Infinity
-    }
-let intPart = floor(num);
-let fracPart = num - intPart;
 
-if (fracPart >= 0.5) {
-    intPart += 1;
-    return intPart;
-} else {
-    return intPart;
-}
+    return floor(num + 0.5);
 }
 
 function ceil(num) {
-    if (num === Infinity) {
-        return Infinity
+    if (num === Infinity || num === -Infinity) {
+        return num;
     }
-    if (num === -Infinity) {
-        return -Infinity
-    }
+
     let intPart = floor(num);
-    let fracPart = num - intPart;
     
-    if (fracPart > 0.0) {
-        intPart ++;
-        return intPart;
-    } else {
+    if (num > 0 && num > intPart) {
+        return intPart + 1;
+    } else if (num < 0 && num < intPart) {
         return intPart;
     }
+    return num;
 }
  
 function floor(num) {
-    if (num === Infinity) {
-        return Infinity
+    if (num === Infinity || num === -Infinity) {
+        return num;
     }
-    if (num === -Infinity) {
-        return -Infinity
-    }
+
     let intPart = 0;
     let sign = num >= 0 ? 1 : -1;
     num = Math.abs(num)
@@ -50,25 +35,14 @@ function floor(num) {
         intPart++;
     }
 
-    if (sign > 0) {
-        return intPart;
-    } else {
-        return -(intPart + 1);
-    }
+   return sign > 0 ? intPart : -intPart - 1
 }
 
 function trunc(num) {
-    if (num === Infinity) {
-        return Infinity
+    if (num === Infinity || num === -Infinity) {
+        return num;
     }
-    if (num === -Infinity) {
-        return -Infinity
-    }
-   let sign = num >= 0 ? 1 : -1;
-   num = Math.abs(num);
-   num = floor(num);
-
-   return num * sign;
+    return num >= 0 ? floor(num) : -floor(-num);
 }
 
 // const nums = [3, -3, 3, -3, 0]
