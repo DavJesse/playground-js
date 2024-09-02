@@ -17,9 +17,9 @@ function addWeek(date) {
 function timeTravel({ date, hour, minute, second }) {
     const newDate = new Date(date);
 
-    if (hour !== undefined) newDate.setHours(hour);
-    if (minute !== undefined) newDate.setHours(minute);
-    if (second !== undefined) newDate.setHours(second);
+    if (hour !== undefined) newDate.setUTCHours(hour);
+    if (minute !== undefined) newDate.setUTCMinutes(minute);
+    if (second !== undefined) newDate.setUTCSeconds(second);
 
     return newDate
 }
@@ -30,9 +30,9 @@ function timeTravel({ date, hour, minute, second }) {
 // console.log(addWeek(new Date('0001-01-08')));
 // console.log(addWeek(new Date('0001-01-09')));
 
-console.log(timeTravel({
-    date: new Date('2020-05-29 23:25:22'),
-    hour: 21,
-    minute: 22,
-    second: 22,
-  }).toString());
+// console.log(timeTravel({
+//     date: new Date('2020-05-29 23:25:22'),
+//     hour: 21,
+//     minute: 22,
+//     second: 22,
+//   }).getTime());
