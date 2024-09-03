@@ -25,4 +25,4 @@
     return `${dd}-${mm}-${yyyy}`
  }
 
- console.log(firstDayWeek(1, '2024'))
+//  console.log(firstDayWeek(1, '2024'))
