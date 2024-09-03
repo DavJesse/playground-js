@@ -28,4 +28,4 @@
     return `${dd}-${mm}-${yyyy}`
  }
 
- console.log(firstDayWeek(1, '1000'))
+ //console.log(firstDayWeek(1, '1000'))
