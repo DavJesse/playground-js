@@ -1,9 +1,15 @@
 function isValid(date) {
-    return date instanceof Date && !isNaN(date.getTime());
+
+    if (date instanceof Date) {
+        return !isNaN(date.getTime());
+    } else if (typeof date === 'string' || typeof date === 'number') {
+        return !isNaN(new Date(date).getTime());
+    }
+    return false;
 }
 
 function isAfter(date1, date2) {
-    return isValid(date1) && isValid(date2) && date1 > date2;
+    return isValid(date1) && isValid(date2) && new Date(date1) > new Date(date2);
 }
 
 function isBefore(date1, date2) {
@@ -22,9 +28,10 @@ function isPast(date) {
 
 // const date1 = new Date('2023-09-02');
 // const date2 = new Date('2023-09-01');
+// const date3 = Date.now()
 
 // console.log('date1 validity:', isValid(date1))
-// console.log('date2 validity:', isValid(date2))
+// console.log('date3 validity:', isValid(date3))
 // console.log(isAfter(date1, date2)); // true
 // console.log(isAfter(date2, date1));
 // console.log(isBefore(date1, date2)); // false
