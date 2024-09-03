@@ -23,6 +23,7 @@ function isFuture(date) {
 }
 
 function isPast(date) {
+    const present = new Date();
     return isValid(date) && isBefore(date, present)
 }
 
@@ -39,4 +40,4 @@ function isPast(date) {
 // console.log(isFuture(date1));
 // console.log(isPast(date1));
 //console.log(isBefore(new Date('')))
-console.log(!isPast(new Date(Date.now() + 1)))
+//console.log(!isPast(new Date(Date.now() + 1)))
