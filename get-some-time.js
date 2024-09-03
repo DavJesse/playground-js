@@ -3,8 +3,11 @@
 
     let firstJan = new Date(year, 0, 1);
     let firstMonday = new Date(firstJan);
+    let daysSinceMon = firstJan.getDay() - 1;
 
-    firstMonday.setDate(firstJan.getDate() + (8 - firstJan.getDay()) % 7);
+    if (daysSinceMon < 0) daysSinceMon = 6;
+
+    firstMonday.setDate(firstJan.getDate() - daysSinceMon);
 
     let startDate = new Date(firstMonday);
     startDate.setDate(firstMonday.getDate() + (week - 1) * 7);
@@ -25,4 +28,4 @@
     return `${dd}-${mm}-${yyyy}`
  }
 
-//  console.log(firstDayWeek(1, '2024'))
+ console.log(firstDayWeek(1, '1000'))
