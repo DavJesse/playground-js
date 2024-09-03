@@ -30,4 +30,4 @@ function getWeekDay(date) {
     return `${dd}-${mm}-${yyyy}`
  }
 
- console.log(firstDayWeek(2, '0001'))
+ console.log(firstDayWeek(1, '1000'))
