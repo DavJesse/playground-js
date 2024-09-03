@@ -1,31 +1,33 @@
  function firstDayWeek(week, year) {
-    year = parseInt(year);
-
-    let firstJan = new Date(year, 0, 1);
-    let firstMonday = new Date(firstJan);
-    let daysSinceMon = firstJan.getDay() - 1;
-
-    if (daysSinceMon < 0) daysSinceMon = 6;
-
-    firstMonday.setDate(firstJan.getDate() - daysSinceMon);
-
-    let startDate = new Date(firstMonday);
-    startDate.setDate(firstMonday.getDate() + (week - 1) * 7);
-
-    if (startDate.getFullYear() < year) {
-        return formatDate(firstJan);
+    let time = new Date(year);
+    if (week === 1) {
+        time.setHours(24);
+        return formatDate(time);
     }
+    
+    let dayPlus = week * 7 * 24;
+    time.setHours(dayPlus - 123);
+    
+    for (let i = 0; i < 7; i++) {
+        if (getWeekDay(time) === 'Monday') {
+            return formatDate(time);
+        }
+        time.setHours(-24);
+    }
+    return time;
+}
 
-    return formatDate(startDate);
-
- }
+function getWeekDay(date) {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return days[date.getDay()];
+}
 
  function formatDate(date) {
     let dd = String(date.getDate()).padStart(2, '0');
     let mm = String(date.getMonth()+1).padStart(2, '0');
-    let yyyy = date.getFullYear()
+    let yyyy = String(date.getFullYear()).padStart(4, '0')
 
     return `${dd}-${mm}-${yyyy}`
  }
 
- //console.log(firstDayWeek(1, '1000'))
+ console.log(firstDayWeek(2, '0001'))
