@@ -4,7 +4,7 @@ function sunnySunday(date) {
     const weekdays = ['Monday', 'Tuesday',  'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     //console.log(sunnyDay)
-    return weekdays[sunnyDay];
+    return weekdays[sunnyDay-5];
 }
 
 console.log(sunnySunday(new Date('0001-01-07'))); // Should print "Monday"
