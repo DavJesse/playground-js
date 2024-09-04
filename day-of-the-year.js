@@ -6,5 +6,5 @@ function dayOfTheYear(date) {
 
    return Math.floor(daySinceFirst) + 1
 }
-console.log(dayOfTheYear(new Date('2024-01-01')))
-console.log(dayOfTheYear(new Date('0001-01-01')))
+// console.log(dayOfTheYear(new Date('2024-01-01')))
+// console.log(dayOfTheYear(new Date('0001-01-01')))
