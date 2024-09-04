@@ -1,7 +1,6 @@
 function countLeapYears(date) {
-    const year = date.getFullYear();
-    console.log(year-5)
-    const result = 0;
+    let year = date.getFullYear();
+    let result = 0;
 
     while (year > 0) {
         if (isLeapYear(year)) {
@@ -13,8 +12,7 @@ function countLeapYears(date) {
     return result
 }
 
-function isLeapYear(date) {
-    const year = date.getFullYear();
+function isLeapYear(year) {
 
     if (year % 4 === 0) {
         if (year % 100 === 0) {
@@ -28,4 +26,4 @@ function isLeapYear(date) {
     return false;
 }
 
-console.log(countLeapYears(new Date(2024, 1, 4)))
+// console.log(countLeapYears(new Date(2024, 1, 4)))
