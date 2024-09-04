@@ -1,27 +1,9 @@
 function citiesOnly(arrObj) {
-    let cityMap = new Map();
-    let result = [];
-    for (let i = 0; i < arrObj.length; i++) {
-        cityMap.set(i, arrObj[i].city);
-        result.push(cityMap.get(i));
-    }
-    return result;
+    return arrObj.map(obj => obj.city);
 }
 
 function upperCasingStates(arrStr) {
-    const states = new Map();
-    let result = []
-
-    arrStr.forEach((state, index) => {
-        states.set(index, state)
-    });
-
-    for (let i = 0; i < states.size; i++) {
-        let state = states.get(i);
-        let titled = toTitle(state);
-        result.push(titled)
-    }
-    return result
+    return arrStr.map(state => toTitle(state));
 }
 
 function toTitle(str) {
@@ -35,29 +17,18 @@ function toTitle(str) {
 }
 
 function fahrenheitToCelsius(arr) {
-    const temp = new Map();
-    const result = [];
-
-    arr.forEach((tmp, index) => {
-        temp.set(index, tmp)
-    })
-
-    for (let i = 0; i < temp.size; i++) {
-        let fahr = temp.get(i)
-        let celc = (fahr.slice(0,fahr.length-2) - 32) * 5 / 9;
-        result.push(Math.floor(celc) + '°C')
-    }
-    return result
+    return arr.map(tmp => {
+        let fahr = parseFloat(tmp);
+        let celc = Math.floor((fahr - 32) * 5 / 9);
+        return `${celc}°C`;
+    });
 }
 
 function trimTemp(arr) {
-    result = arr.map(obj => {
-        return {
+    return arr.map(obj => ({
         ...obj,
-        temperature: obj.temperature.split(' ').join('')
-    };
-});
-    return result; 
+        temperature: obj.temperature.replace(/\s+/g, '')
+    }));
 }
 
 function tempForecasts(arr) {
@@ -90,11 +61,52 @@ const CitiesOnly = [
 //     { city: 'Los Angeles', temperature: '  101 °F   ' },
 //     { city: 'San Francisco', temperature: ' 84 ° F   ' },
 //   ]))
-//   console.log(tempForecasts([
-//     {
-//       city: 'Pasadena',
-//       temperature: ' 101 °F',
-//       state: 'california',
-//       region: 'West',
-//     },
-//   ]))
+  console.log(tempForecasts([
+{
+  city: 'Los Angeles',
+  region: 'West',
+  state: 'california',
+  temperature: '101 °F'
+},
+{
+  city: 'San Francisco',
+  region: 'West',
+  state: 'california',
+  temperature: '84 °F'
+},
+{
+  city: 'Miami',
+  region: 'South',
+  state: 'Florida',
+  temperature: ' 112 °F'
+},
+{
+  city: 'New York City',
+  region: 'North East',
+  state: 'new york',
+  temperature: ' 0 °F'
+},
+{
+  city: 'Juneau',
+  region: 'West',
+  state: 'Alaska',
+  temperature: ' 21° F'
+},
+{
+  city: 'Boston',
+  region: 'North East',
+  state: 'massachussetts',
+  temperature: '45 °F'
+},
+{
+  city: 'Jackson',
+  region: 'South',
+  state: 'mississippi',
+  temperature: ' 70°F  '
+},
+{
+  city: 'Utqiagvik',
+  region: 'West',
+  state: 'Alaska',
+  temperature: ' -1 °F'
+}]))
