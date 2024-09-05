@@ -19,7 +19,7 @@ function filter5Vowels(arr) {
 
 function filter1DistinctVowel(arr) {
 
-    function hasDistinct(str) {
+    function hasOneDistinct(str) {
         const regex = /[aeiouAEIOU]/g
         const matches = str.match(regex);
     
@@ -27,10 +27,10 @@ function filter1DistinctVowel(arr) {
 
         const uniqueVowels = new Set(matches.map(v => v.toLowerCase()));
 
-        return uniqueVowels.size === matches.length;
+        return uniqueVowels.size === 1;
     }
 
-    return arr.filter(hasDistinct);
+    return arr.filter(hasOneDistinct);
     
 }
 
@@ -52,15 +52,30 @@ function multiFilter(arrObj) {
 // console.log(filterStartVowel(['apple', 'banana', 'kiwi', 'blueberry', 'grape']))
 // console.log(filter5Vowels(['education', 'rhythm', 'aerial', 'supercalifragilisticexpialidocious', 'bcd']))
 console.log(filter1DistinctVowel([
-    'Alabama',
-    'Alaska',
-    'Arkansas',
-    'Kansas',
-    'Maryland',
-    'Mississippi',
-    'New Jersey',
-    'Tennessee',
-  ]))
+      'Connecticut',
+      'Florida',
+      'Georgia',
+      'Idaho',
+      'Iowa',
+      'Kentucky',
+      'Maine',
+      'Minnesota',
+      'New York',
+      'Rhode Island',
+      'Texas',
+      'Utah',
+      'Vermont',
+      'Washington',
+      'Wyoming',
+      'Alabama',
+      'Alaska',
+      'Arkansas',
+      'Kansas',
+      'Maryland',
+      'Mississippi',
+      'New Jersey',
+      'Tennessee'
+]))
 // console.log(multiFilter([
 //     { capital: 'Washington', name: 'George', tag: 'leader', region: 'North' },
 //     { capital: 'Atlanta', name: 'Andrew', tag: 'President', region: 'South' },
