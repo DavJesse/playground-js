@@ -1,5 +1,5 @@
 function filterShortStateName(arr) {
-    return arr.filter(str => str.length > 7)
+    return arr.filter(str => str.length < 7)
 }
 
 function filterStartVowel(arr) {
