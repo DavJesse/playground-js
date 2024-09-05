@@ -1,11 +1,11 @@
-function adder(arr) {
+function adder(arr, initialVal=0) {
     return arr.reduce((accumulator, currentValue) => {
         return accumulator + currentValue;
-    }, 0);
+    }, initialVal);
 }
 
-function sumOrMul(arr) {
-    const initialVal = arr[0]%2 === 0 ? 1 : 0
+function sumOrMul(arr, initialVal = arr[0]%2 === 0 ? 1 : 0) {
+    // const initialVal = arr[0]%2 === 0 ? 1 : 0
     return arr.reduce((accumulator, currentValue) => {
         return currentValue%2 === 0 ? accumulator * currentValue : accumulator + currentValue;
 
@@ -18,8 +18,8 @@ function funcExec(arr, initialVal = 0) {
     }, initialVal);
 }
 
-// console.log(adder([1, 2, 3, 4, 5]))
-// console.log(sumOrMul([2, 3, 4, 5, 6]))
+console.log(adder([1, 2, 3, 4, 5]))
+console.log(sumOrMul([2, 3, 4, 5, 6]))
 // function add10(num) {
 //     return num + 10;
 // }
