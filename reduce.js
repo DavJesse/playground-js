@@ -17,7 +17,7 @@ function foldRight(arr, func, acc) {
 }
 
 function reduce(arr, func) {
-    let acc = 0;
+    let acc;
     if (Array.isArray(arr)) {
         for (let i = 0; i < arr.length; i++) {
             acc = func(acc, arr[i]);
@@ -27,7 +27,7 @@ function reduce(arr, func) {
 }
 
 function reduceRight(arr, func) {
-    let acc = 0;
+    let acc;
     if (Array.isArray(arr)) {
         for (let i = arr.length-1; i >= 0; i--) {
             acc = func(acc, arr[i]);
