@@ -30,6 +30,6 @@ function flatMap(arr, func) {
 // const names = map(users, user => user.name);
 // console.log(names);
 
-const sentences = ['Hello world', 'How are you'];
-const words = flatMap(sentences, sentence => sentence.split(' '));
-console.log(words);
+// const sentences = ['Hello world', 'How are you'];
+// const words = flatMap(sentences, sentence => sentence.split(' '));
+// console.log(words);
