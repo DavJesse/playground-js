@@ -18,13 +18,25 @@ function filter5Vowels(arr) {
 }
 
 function filterDistinctVowel(arr) {
-    const regex = /[aeiou]g/
 
-    if
+    function hasDistinct(str) {
+        const regex = /[aeiou]/g
+        const matches = str.match(regex);
+    
+        if (!matches) return false;
+
+        const uniqueVowels = new Set(matches);
+
+        return uniqueVowels.size === matches.length;
+    }
+
+    return arr.filter(hasDistinct);
+    
 }
 
 
 
-console.log(filterShortStateName(['apple', 'banana', 'kiwi', 'blueberry', 'grape']))
-console.log(filterStartVowel(['apple', 'banana', 'kiwi', 'blueberry', 'grape']))
-console.log(filter5Vowels(['education', 'rhythm', 'aerial', 'supercalifragilisticexpialidocious', 'bcd']))
+// console.log(filterShortStateName(['apple', 'banana', 'kiwi', 'blueberry', 'grape']))
+// console.log(filterStartVowel(['apple', 'banana', 'kiwi', 'blueberry', 'grape']))
+// console.log(filter5Vowels(['education', 'rhythm', 'aerial', 'supercalifragilisticexpialidocious', 'bcd']))
+// console.log(filterDistinctVowel(['education', 'rhythm', 'aerial', 'supercalifragilisticexpialidocious', 'beauty']))
