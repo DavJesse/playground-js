@@ -51,31 +51,31 @@ function multiFilter(arrObj) {
 // console.log(filterShortStateName(['apple', 'banana', 'kiwi', 'blueberry', 'grape']))
 // console.log(filterStartVowel(['apple', 'banana', 'kiwi', 'blueberry', 'grape']))
 // console.log(filter5Vowels(['education', 'rhythm', 'aerial', 'supercalifragilisticexpialidocious', 'bcd']))
-console.log(filter1DistinctVowel([
-      'Connecticut',
-      'Florida',
-      'Georgia',
-      'Idaho',
-      'Iowa',
-      'Kentucky',
-      'Maine',
-      'Minnesota',
-      'New York',
-      'Rhode Island',
-      'Texas',
-      'Utah',
-      'Vermont',
-      'Washington',
-      'Wyoming',
-      'Alabama',
-      'Alaska',
-      'Arkansas',
-      'Kansas',
-      'Maryland',
-      'Mississippi',
-      'New Jersey',
-      'Tennessee'
-]))
+// console.log(filter1DistinctVowel([
+//       'Connecticut',
+//       'Florida',
+//       'Georgia',
+//       'Idaho',
+//       'Iowa',
+//       'Kentucky',
+//       'Maine',
+//       'Minnesota',
+//       'New York',
+//       'Rhode Island',
+//       'Texas',
+//       'Utah',
+//       'Vermont',
+//       'Washington',
+//       'Wyoming',
+//       'Alabama',
+//       'Alaska',
+//       'Arkansas',
+//       'Kansas',
+//       'Maryland',
+//       'Mississippi',
+//       'New Jersey',
+//       'Tennessee'
+// ]))
 // console.log(multiFilter([
 //     { capital: 'Washington', name: 'George', tag: 'leader', region: 'North' },
 //     { capital: 'Atlanta', name: 'Andrew', tag: 'President', region: 'South' },
