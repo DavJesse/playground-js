@@ -14,12 +14,16 @@ function flatMap(arr, func) {
         for (let i = 0; i < arr.length; i++) {
             const processed = func(arr[i], i, arr)
             
-            for (let j = 0; j < processed.length; j++) {
-                result.push(processed[j])
+            if (Array.isArray(processed)) {
+                for (let j = 0; j < processed.length; j++) {
+                    result.push(processed[j])
+                }
+            } else {
+                result.push(processed);
             }
         }
     }
-    return result
+    return result;
 }
 
 // const users = [
