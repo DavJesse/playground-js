@@ -18,8 +18,8 @@ function funcExec(arr, initialVal = 0) {
     }, initialVal);
 }
 
-console.log(adder([1, 2, 3, 4, 5]))
-console.log(sumOrMul([2, 3, 4, 5, 6]))
+// console.log(adder([1, 2, 3, 4, 5]))
+// console.log(sumOrMul([2, 3, 4, 5, 6]))
 // function add10(num) {
 //     return num + 10;
 // }
