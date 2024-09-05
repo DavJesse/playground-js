@@ -34,9 +34,28 @@ function filterDistinctVowel(arr) {
     
 }
 
+function multiFilter(arrObj) {
+   return arrObj.filter(obj => {
+    const vowels = /^[aeiou]/i;
+    const containsVowel = /[aeiou]/i;
+
+    return  obj.capital.length >= 8 &&
+    !vowels.test(obj.name) &&
+    containsVowel.test(obj.tag) &&
+    obj.region !== "South";
+   });
+}
+
 
 
 // console.log(filterShortStateName(['apple', 'banana', 'kiwi', 'blueberry', 'grape']))
 // console.log(filterStartVowel(['apple', 'banana', 'kiwi', 'blueberry', 'grape']))
 // console.log(filter5Vowels(['education', 'rhythm', 'aerial', 'supercalifragilisticexpialidocious', 'bcd']))
 // console.log(filterDistinctVowel(['education', 'rhythm', 'aerial', 'supercalifragilisticexpialidocious', 'beauty']))
+console.log(multiFilter([
+    { capital: 'Washington', name: 'George', tag: 'leader', region: 'North' },
+    { capital: 'Atlanta', name: 'Andrew', tag: 'President', region: 'South' },
+    { capital: 'Sacramento', name: 'Mike', tag: 'Mayor', region: 'West' },
+    { capital: 'Philadelphia', name: 'Oscar', tag: 'actor', region: 'East' },
+    { capital: 'London', name: 'Igor', tag: 'CEO', region: 'South' }
+]))
