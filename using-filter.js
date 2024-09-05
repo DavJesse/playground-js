@@ -3,12 +3,12 @@ function filterShortStateName(arr) {
 }
 
 function filterStartVowel(arr) {
-    const regex = /^[aeiou]/;
+    const regex = /^[aeiouAEIOU]/;
     return arr.filter(str => regex.test(str));
 }
 
 function filter5Vowels(arr) {
-    const regex = /[aeiou]/g;
+    const regex = /[aeiouAEIOU]/g;
 
     function countMatches(str) {
         const match = str.match(regex)
@@ -20,7 +20,7 @@ function filter5Vowels(arr) {
 function filterDistinctVowel(arr) {
 
     function hasDistinct(str) {
-        const regex = /[aeiou]/g
+        const regex = /[aeiouAEIOU]/g
         const matches = str.match(regex);
     
         if (!matches) return false;
