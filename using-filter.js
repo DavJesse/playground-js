@@ -52,4 +52,10 @@ function multiFilter(arrObj) {
 // console.log(filterStartVowel(['apple', 'banana', 'kiwi', 'blueberry', 'grape']))
 // console.log(filter5Vowels(['education', 'rhythm', 'aerial', 'supercalifragilisticexpialidocious', 'bcd']))
 // console.log(filterDistinctVowel(['education', 'rhythm', 'aerial', 'supercalifragilisticexpialidocious', 'beauty']))
-/
+// console.log(multiFilter([
+//     { capital: 'Washington', name: 'George', tag: 'leader', region: 'North' },
+//     { capital: 'Atlanta', name: 'Andrew', tag: 'President', region: 'South' },
+//     { capital: 'Sacramento', name: 'Mike', tag: 'Mayor', region: 'West' },
+//     { capital: 'Philadelphia', name: 'Oscar', tag: 'actor', region: 'East' },
+//     { capital: 'London', name: 'Igor', tag: 'CEO', region: 'South' }
+// ]))
