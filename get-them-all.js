@@ -1,59 +1,23 @@
 export const getArchitects = () => {
-    const architects = [];
-    const nonArchitects = [];
-
-    people.forEach(({ id, tag }) => {
-        const personElmnt = document.getElementById(id);
-        if (tag === 'a') {
-            architects.push(personElmnt);
-        } else {
-            nonArchitects.push(personElmnt);
-        }
-    });
-    return [architects, nonArchitects]
+  const architects = Array.from(document.getElementsByTagName('a'));
+  const nonArchitects = Array.from(document.getElementsByTagName('span'));
+  return [architects, nonArchitects];
 };
 
 export const getClassical = () => {
-    const classical = [];
-    const nonClassical = [];
-
-    people.forEach(({ id, classe }) => {
-        const personElmnt = document.getElementById(id);
-        if (classe === 'classical') {
-            classical.push(personElmnt);
-        } else {
-            nonClassical.push(personElmnt)
-        }
-    });
+    const classical = Array.from(document.getElementsByClassName('classical'));
+    const nonClassical = Array.from(document.querySelectorAll('.modern', '.baroque'));
     return [classical, nonClassical];
 };
 
 export const getActive = () => {
-    const activeClassical = [];
-    const nonActiveClassical = [];
-
-    people.forEach(({ id, classe, active }) => {
-        const personElmnt = document.getElementById(id);
-        if (classe === 'classical' && active === true) {
-            activeClassical.push(personElmnt);
-        } else if (classe === 'classical' && active === false) {
-            nonActiveClassical.push(personElmnt)
-        }
-    });
+    const activeClassical = Array.from(document.getElementsByClassName('active'));
+    const nonActiveClassical = Array.from(document.querySelectorAll('a:not(.active), span:not(.active)'));
     return [activeClassical, nonActiveClassical];
 };
 
 export const getBonannoPisano = () => {
-    let Bonanno = null;
-    const restActiveClassical = [];
-
-    people.forEach(({ id, classe, active }) => {
-        const personEl = document.getElementById(id);
-        if (id === 'BonannoPisano') {
-            Bonanno = personEl;
-        } else if (classe === 'classical' && active === true) {
-            restActiveClassical.push(personEl)
-        }
-    });
+    const Bonanno = document.getElementById('BonannoPisano');
+    const restActiveClassical = Array.from(document.querySelectorAll('a.classical.active:not(#BonannoPisano)'));
     return [Bonanno, restActiveClassical]
 };
