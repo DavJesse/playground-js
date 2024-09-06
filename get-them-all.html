@@ -13,10 +13,10 @@
 
     import { people } from './get-them-all.data.js'
     import {
-      // getBonannoPisano,
-      // getActive,
-     // getArchitects,
-      // getClassical,
+      getBonannoPisano,
+      getActive,
+      getArchitects,
+      getClassical,
     } from './get-them-all.js'
 
     const body = document.querySelector('body')
@@ -33,11 +33,11 @@
     }
 
     shuffle(people).map(({ id, classe, address, plans, tag, active }) => {
-      const peoples = document.createElement(tag)
-      peoples.id = id
-      peoples.textContent = 'Someone'
-      peoples.className = `${classe} ${active ? 'active' : ''}`
-      body.append(peoples)
+      const people = document.createElement(tag)
+      people.id = id
+      people.textContent = 'Someone'
+      people.className = `${classe} ${active ? 'active' : ''}`
+      body.append(people)
     })
 
     const buttonsContainer = document.createElement('div')
@@ -45,10 +45,10 @@
     body.append(buttonsContainer)
 
     const buttons = [
-      //{ name: 'Architect', action: getArchitects },
-      // { name: 'Classical', action: getClassical },
-      // { name: 'Active', action: getActive },
-      // { name: 'Bonanno', action: getBonannoPisano },
+      { name: 'Architect', action: getArchitects },
+      { name: 'Classical', action: getClassical },
+      { name: 'Active', action: getActive },
+      { name: 'Bonanno', action: getBonannoPisano },
     ]
 
     buttons.forEach(({ name, action }, i) => {
