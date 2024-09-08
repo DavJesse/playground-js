@@ -71,6 +71,7 @@ export const grid = () => {
           const newCard = createGossipCard(textarea.value)
           body.insertBefore(newCard, formCard.nextSibling)
           textarea.value = ''
+          updateStyles() // Apply styles to the new card
         }
       })
       card.appendChild(button)
