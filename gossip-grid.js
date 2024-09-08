@@ -47,6 +47,7 @@ export const grid = () => {
 
   // Create gossip form
   const formCard = createGossipCard('', true)
+  formCard.classList.add('gossip-form')  // Add a class to identify the form
   body.appendChild(formCard)
 
   // Create gossip cards
@@ -87,7 +88,7 @@ export const grid = () => {
     const fontSize = document.getElementById('fontSize').value
     const background = document.getElementById('background').value
 
-    document.querySelectorAll('.gossip').forEach(card => {
+    document.querySelectorAll('.gossip:not(.gossip-form)').forEach(card => {
       card.style.width = `${width}px`
       card.style.fontSize = `${fontSize}px`
       card.style.background = `hsl(280, 50%, ${background}%)`
