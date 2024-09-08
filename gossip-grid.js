@@ -1,124 +1,98 @@
-import { gossips } from './gossip-grid.data.js';
+import { gossips } from './gossip-grid.data.js'
 
-// Function to create a gossip card
-const createGossipCard = (gossipText) => {
-  const gossipCard = document.createElement('div');
-  gossipCard.classList.add('gossip');
-
-  const textArea = document.createElement('textarea');
-  textArea.value = gossipText;
-  gossipCard.appendChild(textArea);
-
-  return gossipCard;
-};
-
-// Function to create the form card
-const createFormCard = () => {
-  const formCard = document.createElement('div');
-  formCard.classList.add('gossip');
-
-  const textArea = document.createElement('textarea');
-  textArea.placeholder = 'Share your gossip...';
-
-  const button = document.createElement('button');
-  button.textContent = 'Share gossip!';
-
-  button.addEventListener('click', () => {
-    const newGossip = textArea.value;
-    if (newGossip.trim()) {
-      addNewGossip(newGossip);
-      textArea.value = ''; // Clear the textarea after submitting
-    }
-  });
-
-  formCard.appendChild(textArea);
-  formCard.appendChild(button);
-
-  return formCard;
-};
-
-// Function to add new gossip to the list after the form
-const addNewGossip = (newGossip) => {
-  const newGossipCard = createGossipCard(newGossip);
-
-  // Insert the new gossip card after the form (which is the first gossip element)
-  const formCard = document.querySelector('.gossip');
-  formCard.insertAdjacentElement('afterend', newGossipCard);
-};
-
-// Function to render the grid
 export const grid = () => {
-  const body = document.body;
+  const body = document.body
 
-  // Create and add the form card as the first gossip card
-  const formCard = createFormCard();
-  body.appendChild(formCard);
-
-  // Create and add all the gossips from the list
-  gossips.forEach(gossipText => {
-    const gossipCard = createGossipCard(gossipText);
-    body.appendChild(gossipCard);
-  });
+  // Create ranges container
+  const rangesContainer = document.createElement('div')
+  rangesContainer.className = 'ranges'
+  body.appendChild(rangesContainer)
 
   // Create range inputs
-  const rangesContainer = document.createElement('div');
-  rangesContainer.classList.add('ranges');
+  const ranges = [
+    { id: 'width', min: 200, max: 800, value: 250, label: 'Width' },
+    { id: 'fontSize', min: 20, max: 40, value: 20, label: 'Font Size' },
+    { id: 'background', min: 20, max: 75, value: 50, label: 'Background' }
+  ]
 
-  // Create individual range input elements
-  const widthRange = createRangeInput('width', 'Width', 200, 800, (value) => {
+  ranges.forEach(range => {
+    const rangeContainer = document.createElement('div')
+    rangeContainer.className = 'range'
+
+    const label = document.createElement('label')
+    label.htmlFor = range.id
+    label.textContent = range.label
+
+    const input = document.createElement('input')
+    input.type = 'range'
+    input.id = range.id
+    input.min = range.min
+    input.max = range.max
+    input.value = range.value
+    input.className = 'range'
+
+    const span = document.createElement('span')
+    span.textContent = range.value
+
+    rangeContainer.appendChild(label)
+    rangeContainer.appendChild(input)
+    rangeContainer.appendChild(span)
+    rangesContainer.appendChild(rangeContainer)
+
+    input.addEventListener('input', (e) => {
+      span.textContent = e.target.value
+      updateStyles()
+    })
+  })
+
+  // Create gossip form
+  const formCard = createGossipCard('', true)
+  body.appendChild(formCard)
+
+  // Create gossip cards
+  gossips.forEach(gossip => {
+    const card = createGossipCard(gossip)
+    body.appendChild(card)
+  })
+
+  function createGossipCard(content, isForm = false) {
+    const card = document.createElement('div')
+    card.className = 'gossip'
+
+    if (isForm) {
+      const textarea = document.createElement('textarea')
+      textarea.placeholder = 'Got a gossip to share?'
+      card.appendChild(textarea)
+
+      const button = document.createElement('button')
+      button.textContent = 'Share gossip!'
+      button.addEventListener('click', () => {
+        if (textarea.value.trim() !== '') {
+          const newCard = createGossipCard(textarea.value)
+          body.insertBefore(newCard, formCard.nextSibling)
+          textarea.value = ''
+        }
+      })
+      card.appendChild(button)
+    } else {
+      card.textContent = content
+    }
+
+    return card
+  }
+
+  function updateStyles() {
+    const width = document.getElementById('width').value
+    const fontSize = document.getElementById('fontSize').value
+    const background = document.getElementById('background').value
+
     document.querySelectorAll('.gossip').forEach(card => {
-      card.style.width = `${value}px`;
-    });
-  });
+      card.style.width = `${width}px`
+      card.style.fontSize = `${fontSize}px`
+      card.style.background = `hsl(280, 50%, ${background}%)`
+    })
+  }
 
-  const fontSizeRange = createRangeInput('fontSize', 'Font Size', 20, 40, (value) => {
-    document.querySelectorAll('.gossip').forEach(card => {
-      card.style.fontSize = `${value}px`;
-    });
-  });
-
-  const backgroundRange = createRangeInput('background', 'Background', 20, 75, (value) => {
-    document.querySelectorAll('.gossip').forEach(card => {
-      card.style.backgroundColor = `hsl(280, 50%, ${value}%)`;
-    });
-  });
-
-  // Append the ranges to the container
-  rangesContainer.appendChild(widthRange);
-  rangesContainer.appendChild(fontSizeRange);
-  rangesContainer.appendChild(backgroundRange);
-
-  // Append the ranges container to the body
-  body.appendChild(rangesContainer);
-};
-
-// Helper function to create a range input
-const createRangeInput = (id, label, min, max, callback) => {
-  const rangeDiv = document.createElement('div');
-  rangeDiv.classList.add('range');
-
-  const labelElem = document.createElement('label');
-  labelElem.setAttribute('for', id);
-  labelElem.textContent = label;
-
-  const rangeInput = document.createElement('input');
-  rangeInput.type = 'range';
-  rangeInput.id = id;
-  rangeInput.min = min;
-  rangeInput.max = max;
-
-  const valueSpan = document.createElement('span');
-  valueSpan.textContent = min;
-
-  // Update the span and apply changes when range input is used
-  rangeInput.addEventListener('input', () => {
-    valueSpan.textContent = rangeInput.value;
-    callback(rangeInput.value);
-  });
-
-  rangeDiv.appendChild(labelElem);
-  rangeDiv.appendChild(rangeInput);
-  rangeDiv.appendChild(valueSpan);
-
-  return rangeDiv;
-};
+  // Initial styles update
+  updateStyles()
+}
