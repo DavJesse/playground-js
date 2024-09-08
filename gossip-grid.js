@@ -1,100 +1,88 @@
-import { gossips } from './gossip-grid.data.js'
+import { gossips } from "./gossip-grid.data.js";
 
-export const grid = () => {
-  const body = document.body
-
-  // Create ranges container
-  const rangesContainer = document.createElement('div')
-  rangesContainer.className = 'ranges'
-  body.appendChild(rangesContainer)
-
-  // Create range inputs
-  const ranges = [
-    { id: 'width', min: 200, max: 800, value: 250, label: 'Width' },
-    { id: 'fontSize', min: 20, max: 40, value: 20, label: 'Font Size' },
-    { id: 'background', min: 20, max: 75, value: 50, label: 'Background' }
-  ]
-
-  ranges.forEach(range => {
-    const rangeContainer = document.createElement('div')
-    rangeContainer.className = 'range'
-
-    const label = document.createElement('label')
-    label.htmlFor = range.id
-    label.textContent = range.label
-
-    const input = document.createElement('input')
-    input.type = 'range'
-    input.id = range.id
-    input.min = range.min
-    input.max = range.max
-    input.value = range.value
-    input.className = 'range'
-
-    const span = document.createElement('span')
-    span.textContent = range.value
-
-    rangeContainer.appendChild(label)
-    rangeContainer.appendChild(input)
-    rangeContainer.appendChild(span)
-    rangesContainer.appendChild(rangeContainer)
-
-    input.addEventListener('input', (e) => {
-      span.textContent = e.target.value
-      updateStyles()
-    })
-  })
-
-  // Create gossip form
-  const formCard = createGossipCard('', true)
-  formCard.classList.add('gossip-form')  // Add a class to identify the form
-  body.appendChild(formCard)
-
-  // Create gossip cards
-  gossips.forEach(gossip => {
-    const card = createGossipCard(gossip)
-    body.appendChild(card)
-  })
-
-  function createGossipCard(content, isForm = false) {
-    const card = document.createElement('div')
-    card.className = 'gossip'
-
-    if (isForm) {
-      const textarea = document.createElement('textarea')
-      textarea.placeholder = 'Got a gossip to share?'
-      card.appendChild(textarea)
-
-      const button = document.createElement('button')
-      button.textContent = 'Share gossip!'
-      button.addEventListener('click', () => {
-        if (textarea.value.trim() !== '') {
-          const newCard = createGossipCard(textarea.value)
-          body.insertBefore(newCard, formCard.nextSibling)
-          textarea.value = ''
-          updateStyles() // Apply styles to the new card
+function grid() {
+    //Ranges
+    ranges();
+    // First gossip card, with a form to add new gossips
+    let form = document.createElement("form");
+    form.classList.add("gossip");
+    let textarea = document.createElement("textarea");
+    let button = document.createElement("button");
+    button.innerHTML = "Share gossip!";
+    button.type = "submit";
+    button.addEventListener("click", (e) => {
+        e.preventDefault();
+        let gossip = textarea.value;
+        if (gossip.length > 0) {
+            gossips.unshift(gossip);
+            document.querySelectorAll(".gossip").forEach((card, i) => {
+                if (i > 0) card.remove();
+            });
+            textarea.value = "";
+            renderGossips();
         }
-      })
-      card.appendChild(button)
-    } else {
-      card.textContent = content
-    }
+    });
+    form.appendChild(textarea);
+    form.appendChild(button);
+    document.body.appendChild(form);
 
-    return card
-  }
-
-  function updateStyles() {
-    const width = document.getElementById('width').value
-    const fontSize = document.getElementById('fontSize').value
-    const background = document.getElementById('background').value
-
-    document.querySelectorAll('.gossip:not(.gossip-form)').forEach(card => {
-      card.style.width = `${width}px`
-      card.style.fontSize = `${fontSize}px`
-      card.style.background = `hsl(280, 50%, ${background}%)`
-    })
-  }
-
-  // Initial styles update
-  updateStyles()
+    // All other gossip cards
+    renderGossips();
 }
+
+function renderGossips() {
+    gossips.forEach((gossip) => {
+        let div = document.createElement("div");
+        div.classList.add("gossip");
+        div.innerHTML = gossip;
+        document.body.appendChild(div);
+    });
+}
+
+function ranges() {
+    // Ranges
+    let ranges = document.createElement("div");
+    ranges.classList.add("ranges");
+    let widthRange = document.createElement("input");
+    widthRange.type = "range";
+    widthRange.id = "width";
+    widthRange.min = "200";
+    widthRange.max = "800";
+    widthRange.value = "400";
+    widthRange.addEventListener("input", (e) => {
+        let cards = document.querySelectorAll(".gossip");
+        cards.forEach((card) => {
+            card.style.width = e.target.value + "px";
+        });
+    });
+    let fontSizeRange = document.createElement("input");
+    fontSizeRange.type = "range";
+    fontSizeRange.id = "fontSize";
+    fontSizeRange.min = "20";
+    fontSizeRange.max = "40";
+    fontSizeRange.value = "30";
+    fontSizeRange.addEventListener("input", (e) => {
+        let cards = document.querySelectorAll(".gossip");
+        cards.forEach((card) => {
+            card.style.fontSize = e.target.value + "px";
+        });
+    });
+    let backgroundColorRange = document.createElement("input");
+    backgroundColorRange.type = "range";
+    backgroundColorRange.id = "background";
+    backgroundColorRange.min = "20";
+    backgroundColorRange.max = "75";
+    backgroundColorRange.value = "50";
+    backgroundColorRange.addEventListener("input", (e) => {
+        let cards = document.querySelectorAll(".gossip");
+        cards.forEach((card) => {
+            card.style.backgroundColor = `hsl(280, 50%, ${e.target.value}%)`;
+        });
+    });
+    ranges.appendChild(widthRange);
+    ranges.appendChild(fontSizeRange);
+    ranges.appendChild(backgroundColorRange);
+    document.body.appendChild(ranges);
+}
+
+export { grid };
