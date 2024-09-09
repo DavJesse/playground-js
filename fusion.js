@@ -23,7 +23,7 @@ function fusion(obj1, obj2) {
                     result[key] = obj2[key]
                 }
             } else if (typeof obj1[key] === 'object') {
-                if (typeof obj1[key] === 'object') {
+                if (typeof obj2[key] === 'object') {
                     result[key] = fusion(obj1[key], obj2[key]);
                 } else {
                     result[key] = obj2[key]
@@ -46,8 +46,8 @@ function fusion(obj1, obj2) {
 // fusion(obj1, obj2)
 // console.log(fusion(obj1, obj2));
 
-console.log(fusion({ a: 1, b: { c: "Salem" } }, { a: 10, x: [], b: { c: "alem" } }))
-console.log(fusion({ a: { b: [3, 2], c: { d: 8 } } },{ a: { b: [0, 3, 1], c: { d: 3 } } }));
+console.log(fusion({ a: { b: 1 } }, { a: 1 }))
+//console.log(fusion({ a: { b: [3, 2], c: { d: 8 } } },{ a: { b: [0, 3, 1], c: { d: 3 } } }));
 // console.log(fusion());
 // console.log(fusion());
 // console.log(fusion());
