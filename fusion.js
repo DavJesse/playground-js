@@ -20,7 +20,13 @@ function fusion(obj1, obj2) {
                 if (typeof obj2[key] === 'number') {
                     result[key] = obj1[key] + obj2[key]
                 } else {
-                    result[key] = obj2[2]
+                    result[key] = obj2[key]
+                }
+            } else if (typeof obj1[key] === 'object') {
+                if (typeof obj1[key] === 'object') {
+                    result[key] = fusion(obj1[key], obj2[key]);
+                } else {
+                    result[key] = obj2[key]
                 }
             }
         } else if (obj1.hasOwnProperty(key)) {
@@ -40,8 +46,8 @@ function fusion(obj1, obj2) {
 // fusion(obj1, obj2)
 // console.log(fusion(obj1, obj2));
 
-// console.log(fusion({ a: 10, b: 8, c: 1 }, { a: 10, b: 2 }))
-// console.log(fusion({ a: "hello", b: [] }, { a: 4 }));
+console.log(fusion({ a: 1, b: { c: "Salem" } }, { a: 10, x: [], b: { c: "alem" } }))
+console.log(fusion({ a: { b: [3, 2], c: { d: 8 } } },{ a: { b: [0, 3, 1], c: { d: 3 } } }));
 // console.log(fusion());
 // console.log(fusion());
 // console.log(fusion());
