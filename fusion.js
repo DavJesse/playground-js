@@ -4,12 +4,24 @@ function fusion(obj1, obj2) {
     
     allKeys.forEach(key => {
         if (obj1.hasOwnProperty(key) && obj2.hasOwnProperty(key)) {
-            if (Array.isArray(obj1[key]) && Array.isArray(obj2[key])) { 
-                result[key] = [...obj1[key], ...(obj2[key])]
-            } else if (typeof obj1[key] === 'string' && typeof obj2[key] === 'string') {
-                result[key] = obj1[key] + ' ' + obj2[key];
-            } else if (typeof obj1[key] === 'number' && typeof obj2[key] === 'number') {
-                result[key] = `${obj1[key] + obj2[key]}`
+            if (Array.isArray(obj1[key])) { 
+                if (Array.isArray(obj2[key])) {
+                    result[key] = [...obj1[key], ...(obj2[key])]
+                } else {
+                    result[key] = obj2[key]
+                }
+            } else if (typeof obj1[key] === 'string') {
+                if ( typeof obj2[key] === 'string') {
+                    result[key] = obj1[key] + ' ' + obj2[key];
+                } else {
+                    result[key] = obj2[key]
+                }
+            } else if (typeof obj1[key] === 'number') {
+                if (typeof obj2[key] === 'number') {
+                    result[key] = obj1[key] + obj2[key]
+                } else {
+                    result[key] = obj2[2]
+                }
             }
         } else if (obj1.hasOwnProperty(key)) {
             result[key] = obj1[key]
@@ -28,8 +40,8 @@ function fusion(obj1, obj2) {
 // fusion(obj1, obj2)
 // console.log(fusion(obj1, obj2));
 
-console.log(fusion({ arr: [1, "2"] }, { arr: [2] }))
-console.log(fusion({ arr: [], arr1: [5] },{ arr: [10, 3], arr1: [15, 3], arr2: ["7", "1"] }));
+// console.log(fusion({ a: 10, b: 8, c: 1 }, { a: 10, b: 2 }))
+// console.log(fusion({ a: "hello", b: [] }, { a: 4 }));
 // console.log(fusion());
 // console.log(fusion());
 // console.log(fusion());
