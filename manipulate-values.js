@@ -1,14 +1,9 @@
 function filterValues(obj, func) {
-    return Object.fromEntries(
-        Object.entries(obj).filter(([key, value]) => {
-            // Apply func directly if the value is not an object
-            if (typeof value !== 'object' || value === null) {
-                return func(value);
-            }
-            // Apply func to each value in the nested object and ensure at least one satisfies the condition
-            return Object.values(value).some(func);
-        })
-    );
+    let result = {};
+    for (const [key, value] of Object.entries(obj)) {
+        if (func(value)) result[key] = value;
+    }
+    return result
 }
 
 function  mapValues(obj, func) {
