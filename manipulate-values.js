@@ -1,16 +1,17 @@
 function filterValues(obj, func) {
     return Object.fromEntries(
         Object.entries(obj).filter(([key, value]) => {
-            return typeof value === 'object' && value !== null
-            ? Object.values(value).some(func)
-            : func(value);
+            if (typeof value === 'object' && value !== null) {
+                return func(value)
+            }
+            Object.values(value).some(func)
+            
         })
     );
 }
 
 function  mapValues(obj, func) {
     return Object.fromEntries(
-
         Object.entries(obj).map(([key, value]) => {
             const updatedVal = Object.fromEntries(
                 Object.entries(value).map(([innerKey, innerValue]) => {
@@ -48,10 +49,10 @@ function reduceValues(obj, func) {
 //     sugar:   { calories: 387, protein: 0,     carbs: 100,   sugar: 100, fiber: 0,   fat: 0     },
 //     orange:  { calories: 49,  protein: 0.9,   carbs: 13,    sugar: 9,   fiber: 0.2, fat: 0.1   },
 //   }
-//console.log(filterValues({ oil: 50, garlic: 22 }, (v) => v < 80))
+console.log(filterValues(nutritionDB, (v) => v === 0))
 //  // console.log(mapValues(nutritionDB, (v) => v+1))
 //  // console.log(reduceValues(nutritionDB, (acc, cr) => acc + cr))
 //   console.log(reduceValues(nutritionDB, (acc, cr) => acc + cr))
 
-// const nutrients = { carbohydrates: 12, protein: 20, fat: 5 }
+// const nu    garlic: { calories: 149, protein: 6.4, carbs: 33, sugar: 1, fiber: 2.1, fat: 0.5 },trients = { carbohydrates: 12, protein: 20, fat: 5 }
 // console.log(reduceValues(nutrients, (acc, cr) => acc + cr))
