@@ -9,16 +9,11 @@ function filterValues(obj, func) {
 }
 
 function  mapValues(obj, func) {
-    return Object.fromEntries(
-        Object.entries(obj).map(([key, value]) => {
-            const updatedVal = Object.fromEntries(
-                Object.entries(value).map(([innerKey, innerValue]) => {
-                    return [innerKey, func(innerValue)]
-                })
-            );
-            return [key, updatedVal]
-        })
-    )
+    let result = {};
+    for (let key in obj) {
+        result[key] = func(obj[key]);
+    }
+    return result;
 }
 
 function reduceValues(obj, func) {
