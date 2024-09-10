@@ -48,7 +48,7 @@ function reduceValues(obj, func) {
 //     sugar:   { calories: 387, protein: 0,     carbs: 100,   sugar: 100, fiber: 0,   fat: 0     },
 //     orange:  { calories: 49,  protein: 0.9,   carbs: 13,    sugar: 9,   fiber: 0.2, fat: 0.1   },
 //   }
-console.log(filterValues({ oil: 50, garlic: 22 }, (v) => v < 80))
+//console.log(filterValues({ oil: 50, garlic: 22 }, (v) => v < 80))
 //  // console.log(mapValues(nutritionDB, (v) => v+1))
 //  // console.log(reduceValues(nutritionDB, (acc, cr) => acc + cr))
 //   console.log(reduceValues(nutritionDB, (acc, cr) => acc + cr))
