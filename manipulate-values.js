@@ -16,20 +16,23 @@ function  mapValues(obj, func) {
     return result;
 }
 
-function reduceValues(obj, func) {
-    let result = 0
-    const values = Object.values(obj);
-
-    if (typeof values[0] === 'object') {
-        for (let i = 0; i < values.length; i++) {
-            const innerValues = Object.values(values[i])
-            result += innerValues.reduce(func, 0)
-        }
+function reduceValues(obj, func, initial) {
+    let values
+    let acc
+    let start
+    if (initial === undefined){
+         values = Array.from(Object.values(obj))
+         acc = values[0]
+         start = 1
     } else {
-        result = values.reduce(func, 0)
+        acc = initial
+        values = Array.from(Object.values(obj))
+        start = 0
     }
-
-    return result   
+    for (let i = start; i < values.length; i++){
+        acc = func(acc,values[i])
+    }
+    return acc 
 }
 
 // const nutritionDB = {
