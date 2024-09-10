@@ -1,9 +1,11 @@
 function filterValues(obj, func) {
     let result = {};
-    for (const [key, value] of Object.entries(obj)) {
-        if (func(value)) result[key] = value;
+    for (let key in obj) {
+        if (func(obj[key])) {
+            res[key] = obj[key];
+        }
     }
-    return result
+    return result;
 }
 
 function  mapValues(obj, func) {
