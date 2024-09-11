@@ -50,7 +50,7 @@ function reduceScore(personnel, initVal=0) {
 
 function filterForce(personnel) {
     return filterCurry(([_, person]) => 
-        person.shootingScore >= 80
+        person.shootingScore >= 80 && person.isForceUser
     )(personnel);
 }
 
