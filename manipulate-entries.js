@@ -22,7 +22,14 @@ function reduceEntries(obj, func, initial) {
     const entries = Object.entries(obj);
     let acc, start;
     if (initial === undefined) {
-        if (entries.length === 0) return undefined;
+        if (ent  let result = {};
+
+            for (const [key, value] of Object.entries(obj)) {
+                if (func(key, value)) {
+                    result[key] = value;
+                }
+            }
+            return result;ries.length === 0) return undefined;
         acc = entries[0][1];
         start = 1;
     } else {
@@ -40,7 +47,7 @@ function totalCalories(obj) {
 }
 
 function lowCarbs(obj) {
-    return filterEntries(obj, (_, calories) => calories < 50);
+    return filterEntries(obj, ([item, amount]) => nutritionDB[item].calories * amount / 100 < 50);
 }
 
 function cartTotal(obj) {
