@@ -40,7 +40,8 @@ function totalCalories(obj) {
 }
 
 function lowCarbs(obj) {
-    return filterEntries(obj, ([item, amount]) => nutritionDB[item].calories * amount / 100 < 50);
+    return filterEntries(obj, ([item, amount]) =>
+    nutritionDB[item].carbss * amount / 100 < 50);
 }
 
 function cartTotal(obj) {
