@@ -42,11 +42,24 @@ function filterCurry(func) {
     }
 }
 
-function reduceScrore(obj) {
-    const innerObj = Object.values(obj)
+function reduceScore(personnel, initVal=0) {
+   return reduceCurry((acc, [_, person]) =>
+    person.isForceUser ? acc + person.pilotingScore + person.shootingScore :acc
+ )(personnel, initVal);
+};
 
-    const func = ()
+function filterForce(personnel) {
+    return filterCurry(([_, person]) => 
+        person.shootingScore >= 80
+    )(personnel);
 }
+
+function mapAverage(personnel) {
+    return mapCurry(([key, person]) => [
+        key,
+        {...person, averageScore: (person.pilotingScore + person.shootingScore) / 2 }
+    ])(personnel);
+};
 
 // const withDefaults = {x: 1, y: 2};
 // console.log({...withDefaults})
@@ -68,5 +81,9 @@ function reduceScrore(obj) {
 //     nbr: 1,
 //     arr: [1, 2],
 //   }))
+
+// console.log(reduceScore(personnel))
+// console.log(mapAverage(personnel))
+// console.log(filterForce(personnel))
   
 
