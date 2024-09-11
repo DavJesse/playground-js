@@ -42,6 +42,12 @@ function filterCurry(func) {
     }
 }
 
+function reduceScrore(obj) {
+    const innerObj = Object.values(obj)
+
+    const func = ()
+}
+
 // const withDefaults = {x: 1, y: 2};
 // console.log({...withDefaults})
 // const result = {...withDefaults, ...{y: 3, z: 4}};
@@ -55,12 +61,12 @@ function filterCurry(func) {
 //     calebDume:     { id: 11, pilotingScore: 71, shootingScore: 85, isForceUser: true  },
 //   }
   
-// console.log(mapCurry(([k, v]) => [`${k}_force`, v])(personnel))
-console.log(reduceCurry((acc, [k, v]) => (acc += v))({ a: 1, b: 2, c: 3 }, 0))
-console.log(filterCurry(([k, v]) => typeof v === 'string' || k === 'arr')({
-    str: 'string',
-    nbr: 1,
-    arr: [1, 2],
-  }))
+// // console.log(mapCurry(([k, v]) => [`${k}_force`, v])(personnel))
+// console.log(reduceCurry((acc, [k, v]) => (acc += v))({ a: 1, b: 2, c: 3 }, 0))
+// console.log(filterCurry(([k, v]) => typeof v === 'string' || k === 'arr')({
+//     str: 'string',
+//     nbr: 1,
+//     arr: [1, 2],
+//   }))
   
 
