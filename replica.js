@@ -1,32 +1,35 @@
 function replica(target, ...sources) {
-    // Check if the target is an object or array
     if (typeof target !== 'object' || target === null) {
         throw new Error('Target must be a non-null object');
     }
 
-    // Loop through each source object
     sources.forEach(source => {
         if (typeof source !== 'object' || source === null) {
-            return; // Skip non-object sources
+            return;
         }
 
-        // Iterate through each key-value pair in the source
         for (let key in source) {
             if (source.hasOwnProperty(key)) {
                 const sourceValue = source[key];
 
-                // If the value is an object or array, we need to recurse
-                if (typeof sourceValue === 'object' && sourceValue !== null) {
-                    // Ensure the target has an object or array to merge into
+                // Handle special object types
+                if (sourceValue instanceof RegExp) {
+                    target[key] = new RegExp(sourceValue); // Copy RegExp
+                } else if (sourceValue instanceof Date) {
+                    target[key] = new Date(sourceValue.getTime()); // Copy Date
+                } else if (typeof sourceValue === 'function') {
+                    target[key] = sourceValue; // Directly assign functions
+                }
+                // Handle objects and arrays
+                else if (typeof sourceValue === 'object' && sourceValue !== null) {
                     if (Array.isArray(sourceValue)) {
                         target[key] = Array.isArray(target[key]) ? target[key] : [];
                     } else {
                         target[key] = typeof target[key] === 'object' && target[key] !== null ? target[key] : {};
                     }
-                    // Recursive deep merge for nested objects/arrays
                     replica(target[key], sourceValue);
                 } else {
-                    // Primitive values are directly assigned
+                    // Directly assign primitive values
                     target[key] = sourceValue;
                 }
             }
@@ -35,6 +38,7 @@ function replica(target, ...sources) {
 
     return target;
 }
+
 
 // const target = { a: 1, b: { x: 1 } };
 // const source1 = { b: { y: 2 }, c: 3 };
