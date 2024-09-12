@@ -10,17 +10,19 @@ function opDebounce(func, delay, option = {}) {
     let timeOut;
 
     return function(...args) {
+        if (option.leading && !timeOut) {
+            func.apply(this, args)
+        }
+
+        if (timeOut) {
+            clearTimeout(timeOut);
+        }
+
         function later() {
-            timeOut = null;
-            if (!option.leading) func.apply(this, args);
+            func.apply(this, args);
         };
 
-        clearTimeout(timeOut);
         timeOut = setTimeout(later, delay)
-
-        if (option.leading && !timeOut) func.apply(this, args)
-
     };
 }
 
-//opDebounce()
