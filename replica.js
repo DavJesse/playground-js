@@ -36,10 +36,10 @@ function replica(target, ...sources) {
     return target;
 }
 
-const target = { a: 1, b: { x: 1 } };
-const source1 = { b: { y: 2 }, c: 3 };
-const source2 = { b: { z: 3 }, d: 4 };
+// const target = { a: 1, b: { x: 1 } };
+// const source1 = { b: { y: 2 }, c: 3 };
+// const source2 = { b: { z: 3 }, d: 4 };
 
-const result = replica(target, source1, source2);
+// const result = replica(target, source1, source2);
 
-console.log(result);
+// console.log(result);
