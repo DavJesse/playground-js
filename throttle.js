@@ -28,13 +28,12 @@ function opThrottle(func, delay, options = {}) {
     let timeout, waitArgs, lastThis;
     let previous = 0;
     const timeoutFunc = () => {
-        previous = options.leading === false ? 0 : Date.now()
-        timeout = null;
-
         if (waitArgs) {
             func.apply(lastThis, waitArgs);
             waitArgs = lastThis = null;
+            previous = options.leading === false ? 0 : Date.now()
         }
+        timeout = null;
     };
 
     return function(...args) {
