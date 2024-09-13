@@ -24,7 +24,7 @@ function timeout(delay = 0, callback = async() => {}) {
         const result = await Promise.race([timeout, functionCall]).then(
             (result) => result
         );
-        if (res instanceof Error) {
+        if (result instanceof Error) {
             throw result;
         }
         return result;
