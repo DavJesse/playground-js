@@ -24,37 +24,29 @@ function throttle(func, delay) {
     }
 }
 
-function opThrottle(func, delay, options = {}) {
-    let timeout, waitArgs, lastThis;
-    let previous = 0;
-    const timeoutFunc = () => {
-        if (waitArgs) {
-            func.apply(lastThis, waitArgs);
-            waitArgs = lastThis = null;
-            previous = options.leading === false ? 0 : Date.now()
-        }
-        timeout = null;
-    };
-
-    return function(...args) {
-        const now = Date.now();
-        if (!previous && options.leading === false) {
-            previous = now
+function opThrottle(func, delay, {leading = false, trailing = true} = {}) {
+    let timeout = null;
+    let last = 0;
+    return function () {
+        const now = +new Date();
+        if (!last && leading === false) {
+            last = now;
         }
 
-        const remaining = delay - (now - previous)
-        waitArgs = args;
-        lastThis = this;
-
-        if (remaining <= 0 || remaining > delay) {
+        if (now - last > delay) {
             if (timeout) {
-                clearTimeout(timeout);
+                clearTimeout(timeout)
                 timeout = null;
             }
-            previous = now;
+
             func.apply(this, args);
-        } else if (!timeout && options.trailing != false) {
-            timeout = setTimeout(timeoutFunc, remaining)
+            last = now;
+        } else if (!timeout && trailing === false) {
+            timeout = setTimeout(() => {
+                func.apply(this, args);
+                last = +new Date();
+                timeout = null;
+            }, delay)
         }
     };
 }
