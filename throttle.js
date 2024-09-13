@@ -27,7 +27,7 @@ function throttle(func, delay) {
 function opThrottle(func, delay, {leading = false, trailing = true} = {}) {
     let timeout = null;
     let last = 0;
-    return function () {
+    return function(...args) {
         const now = +new Date();
         if (!last && leading === false) {
             last = now;
