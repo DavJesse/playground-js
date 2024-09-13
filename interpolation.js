@@ -1,6 +1,6 @@
 function interpolation({step = 0, start = 0, end = 0, callback = () => {}, duration = 0} = {}) {
     const stepSize = (end - start) / step
-    const delaySize = duration / size
+    const delaySize = duration / step
     let curr = start
     let i = 0;
     const timeout = setInterval(() => {
