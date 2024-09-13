@@ -25,7 +25,7 @@ function timeout(delay = 0, callback = async() => {}) {
             (result) => result
         );
         if (res instanceof Error) {
-            throw res;
+            throw result;
         }
         return result;
     };
