@@ -6,7 +6,7 @@ async function isWinner(country) {
         }
         country = countryResult;
         if (country.continent !== 'Europe') {
-            return `${country.name} is not what we are looking for because of continent`;
+            return `${country.name} is not what we are looking for because of the continent`;
         }
         let result = await db.getResults(country.id);
         if (result === Error('Results found')) {
