@@ -21,8 +21,6 @@ async function isWinner(country) {
         )
 
     } catch (e) {
-        if (e.message == 'Country not Found') {
-            return `${country} never was a winner`
-        }
+            return `${country} never was a winner`;
     }
 }
