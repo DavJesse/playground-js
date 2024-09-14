@@ -1,9 +1,10 @@
 async function isWinner(country) {
     try {
-        country = await db.getWinner(country);
-        if (country === Error('Country not Found')) {
-            return `${country.name} never was a winner`;
+        let countryResult = await db.getWinner(country);
+        if (countryResult instanceof Error) {
+            return `${country} never was a winner`;
         }
+        country = countryResult;
         if (country.continent !== 'Europe') {
             return `${country.name} is not what we are looking for because of continent`;
         }
