@@ -15,18 +15,17 @@ function retry(count = 3, callback = async () => {}) {
 
 function timeout(delay = 0, callback = async() => {}) {
     return async function(...args) {
-        const timeout = new Promise((resolve) =>
-            setTimeout(resolve, delay, Error('timeout'))
+        let timeoutId;
+        const timeout = new Promise((_, reject) =>
+            timeoutId = setTimeout(() => reject(new Error('timeout')), delay)
         );
-        const functionCall = new Promise((resolve) =>
-            resolve(callback(...args))
-        );
-        const result = await Promise.race([timeout, functionCall]).then(
-            (result) => result
-        );
-        if (result instanceof Error) {
-            throw result;
+        try {
+            const result = await Promise.race([timeout, callback(...args)]);
+            clearTimeout(timeoutId);
+            return result;
+        } catch (error) {
+            clearTimeout(timeoutId);
+            throw error;
         }
-        return result;
     };
 }
