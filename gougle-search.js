@@ -13,8 +13,8 @@ async function gougleSearch(q) {
 
     try {
         const result = await Promise.race([
-            Promise.all(servers.map(servers.map(server => queryServers(server, q))),
-        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 80)))
+            Promise.all(servers.map(server => queryServers(server, q))),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 80))
         ]);
 
         return Object.fromEntries(servers.map((server, index) => [server, result[index]]));
