@@ -3,7 +3,7 @@ function all(obj) {
     const promises = Object.values(obj);
 
     return new Promise((resolve, reject) => {
-        Promise.all(promises).then(results => {
+        Promise.constructor.all(promises).then(results => {
             const resolvObj = {};
             keys.forEach((key, index) => {
                 resolvObj[key] = results[index];
