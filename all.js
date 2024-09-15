@@ -1,15 +1,8 @@
-function all(obj) {
-    const keys = Object.keys(obj);
-    const promises = Object.values(obj);
-
-    return new Promise((resolve, reject) => {
-        Promise.constructor.all(promises).then(results => {
-            const resolvObj = {};
-            keys.forEach((key, index) => {
-                resolvObj[key] = results[index];
-            });
-            resolve(resolvObj);
-        })
-        .catch(reject);
-    });
+async function all(obj) {
+    var result = {};
+    if (Object.keys(obj).length === 0) return {};
+    for (let key in obj) {
+        result[key] = await obj[key];
+    }
+    return result;
 }
