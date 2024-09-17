@@ -7,7 +7,7 @@ const path = dir ? dir : '.';
 fs.readdir(path, (err, files) => {
     if (!err) {
         console.log(files.length);
-        process.exit(1);
+    } else {
+        console.error(err);
     }
-    console.error(err);
 })
