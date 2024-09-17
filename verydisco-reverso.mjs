@@ -1,15 +1,14 @@
 import { argv } from 'node:process';
 import { readFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+//import { resolve } from 'node:path';
 
 const filePath = argv[2]
-console.log(filePath);
+//console.log(filePath);
 
 async function logFile() {
-    try {
-        const filePath = resolve(filePath);
-        const contents = await readFile(filePath, { encoding: 'utf8' });
-        
+       // const filePath = resolve();
+        const contents = await readFile(filePath, 'utf8');
+        if (contents.length === 0) return ''
         const words = contents.split(' ');
         const discoVeryArr = [];
         words.map((word) => {
@@ -22,10 +21,7 @@ async function logFile() {
         })
 
         console.log(discoVeryArr.join(''))
-    } catch (e) {
-        console.error(e.message)
-    }
 
 }
 
-logFile();
+await logFile();
