@@ -24,7 +24,7 @@ fs.readdir(path, (err, files) => {
 
 function trimName(name) {
     let result = '';
-    const trimedExt = name.slice(0, name.length - 5)
+    const trimedExt = name.slice(-5)
     const splitted = trimedExt.split('_');
     result = splitted[1] + ' ' + splitted[0]
     return result
