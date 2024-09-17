@@ -12,22 +12,15 @@ fs.readdir(path, (err, files) => {
             const content = fs.readFile(`${path}/${file}`, 'utf8');
             const data = JSON.parse(content);
 
-            for (const obj of data) {
-                if (obj.answer === 'yes') {
-                    guests.push(obj.name)
-                }
+            if (data.answer === 'yes') {
+                guests.push(file)
             }
         })
 
-        if (guests.length > 0) {
-            guests.sort();
-
-            for (const guest of guests) {
-                let line = `${count}. ${guest}`;
-                formatedGuests.push(line);
-                count++;
-            }
+        for (const guest of guests) {
+            formatedGuests.push(trimGuestName(guest));
         }
+        
         fs.writeFile('vip.txt', formatedGuests.join('\n'), 'utf8', (err) => {
             if (err) {
                 console.error(err.message)
@@ -42,3 +35,11 @@ fs.readdir(path, (err, files) => {
         process.exit(1);
     }
 })
+
+function trimGuestName(name) {
+    let result = '';
+    const trimedExt = name.slice(0, -5)
+    const splitted = trimedExt.split('_');
+    result = splitted[1] + ' ' + splitted[0]
+    return result
+}
