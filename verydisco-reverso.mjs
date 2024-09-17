@@ -20,7 +20,7 @@ async function logFile() {
             discoVeryArr.push(discoVery);
         })
 
-        console.log(discoVeryArr.join(''))
+        console.log(discoVeryArr.join(' '))
 
 }
 
