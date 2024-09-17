@@ -10,14 +10,7 @@ fs.readdir(path, (err, files) => {
             a - b
         });
 
-        const fileNames = [
-            'Ubaid_Ballard.json',
-            'Victoria_Chan.json',
-            'Dominika_Mullen.json',
-            'Heath_Denton.json',
-            `${random}_Hamilton.json`,
-          ]
-        fileNames.forEach(trimName);
+        files =files.map(file => trimName(file));
 
         for (const file of files) {
             console.log(count + '. ' + file);
@@ -31,7 +24,7 @@ fs.readdir(path, (err, files) => {
 
 function trimName(name) {
     let result = '';
-    const trimedExt = name.slice(-5)
+    const trimedExt = name.slice(0, -5)
     const splitted = trimedExt.split('_');
     result = splitted[1] + ' ' + splitted[0]
     return result
