@@ -6,21 +6,28 @@ let guests = [];
 let formatedGuests = [];
 let count = 1
 
-fs.readdir(path, (err, files) => {
+fs.readdir(path, (err, filess) => {
     if (!err) {
-        files.forEach(file => {
+        const files = [
+            ['Ubaid_Ballard.json', { answer: 'no' }],
+            ['Victoria_Chan.json', { answer: 'yes' }],
+            ['Dominika_Mullen.json', { answer: 'no' }],
+            ['Heath_Denton.json', { answer: 'yes' }],
+            ['Lilith_Hamilton.json', { answer: 'no' }],
+          ]
+        files.forEach((file) => {
             const content = fs.readFile(`${path}/${file}`, 'utf8');
             const data = JSON.parse(content);
 
             if (data.answer === 'yes') {
-                guests.push(file)
+                guests.push(file[0])
             }
         })
 
         for (const guest of guests) {
             formatedGuests.push(trimGuestName(guest));
         }
-        
+
         fs.writeFile('vip.txt', formatedGuests.join('\n'), 'utf8', (err) => {
             if (err) {
                 console.error(err.message)
