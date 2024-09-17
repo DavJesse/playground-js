@@ -10,6 +10,8 @@ fs.readdir(path, (err, files) => {
             a - b
         });
 
+        files.forEach(trimName);
+
         for (const file of files) {
             console.log(count + '. ' + file);
             count++;
@@ -19,3 +21,11 @@ fs.readdir(path, (err, files) => {
         console.error(err);
     }
 });
+
+function trimName(name) {
+    let result = '';
+    const trimedExt = name.slice(0, name.length - 5)
+    const splitted = trimedExt.split('_');
+    result = splitted[1] + ' ' + splitted[0]
+    return result
+}
