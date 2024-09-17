@@ -10,7 +10,14 @@ fs.readdir(path, (err, files) => {
             a - b
         });
 
-        files.forEach(trimName);
+        const fileNames = [
+            'Ubaid_Ballard.json',
+            'Victoria_Chan.json',
+            'Dominika_Mullen.json',
+            'Heath_Denton.json',
+            `${random}_Hamilton.json`,
+          ]
+        fileNames.forEach(trimName);
 
         for (const file of files) {
             console.log(count + '. ' + file);
