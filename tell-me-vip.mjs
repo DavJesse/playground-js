@@ -2,7 +2,8 @@ import fs from 'fs'
 import { argv } from 'node:process'
 
 const path = !argv[2] ? '.' : argv[2];
-let guests = []
+let guests = [];
+let formatedGuests = [];
 let count = 1
 
 fs.readdir(path, (err, files) => {
@@ -21,9 +22,17 @@ fs.readdir(path, (err, files) => {
         guests.sort();
 
         for (const guest of guests) {
-            console.log(`${count}. ${guest}`);
+            let line = `${count}. ${guest}`;
+            formatedGuests.push(line);
             count++;
         }
+        fs.writeFile('vip.txt', formatedGuests.join('\n'), 'utf8', (err) => {
+            if (err) {
+                console.error(err.message)
+                process.exit(1);
+            }
+        });
+
 
     } else {
         console.error(err.message);
