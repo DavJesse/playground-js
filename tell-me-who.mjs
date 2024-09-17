@@ -6,11 +6,10 @@ const path = argv[2];
 fs.readdir(path, (err, files) => {
     if (!err) {
         let count = 1;
-        files.sort((a, b) => {
-            a - b
-        });
+     
+        files = files.map(file => trimName(file));
 
-        files =files.map(file => trimName(file));
+        files.sort();
 
         for (const file of files) {
             console.log(count + '. ' + file);
