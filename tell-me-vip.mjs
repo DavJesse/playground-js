@@ -19,12 +19,14 @@ fs.readdir(path, (err, files) => {
             }
         })
 
-        guests.sort();
+        if (guests.length > 0) {
+            guests.sort();
 
-        for (const guest of guests) {
-            let line = `${count}. ${guest}`;
-            formatedGuests.push(line);
-            count++;
+            for (const guest of guests) {
+                let line = `${count}. ${guest}`;
+                formatedGuests.push(line);
+                count++;
+            }
         }
         fs.writeFile('vip.txt', formatedGuests.join('\n'), 'utf8', (err) => {
             if (err) {
@@ -32,6 +34,7 @@ fs.readdir(path, (err, files) => {
                 process.exit(1);
             }
         });
+
 
 
     } else {
