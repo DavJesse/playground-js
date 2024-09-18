@@ -4,7 +4,7 @@ import fs from 'fs';
 
 const targetFile = argv[2];
 const keyWord = argv[3];
-const destinationFile = argv[4];
+let destinationFile = argv[4];
 let processed = ''
 
 fs.readFile(targetFile, 'utf8', (err, content) => {
@@ -18,8 +18,8 @@ fs.readFile(targetFile, 'utf8', (err, content) => {
             write(destinationFile, processed)
         } else if (keyWord.toLowerCase() === 'decode') {
             processed = Buffer.from(content, 'base64').toString('utf8');
-            write(destinationFile, processed)
             if (!destinationFile) destinationFile = 'clear.txt'
+            write(destinationFile, processed)
         } else {
             console.error(`${keyWord} is an invalid entry`)
             process.exit(1);
