@@ -8,17 +8,15 @@ let count = 1
 
 fs.readdir(path, (err, files) => {
     if (!err) {
-       
+
         files.forEach((file) => {
             const content = fs.readFile(`${path}/${file}`, 'utf8');
             const data = JSON.parse(content);
 
-            if (data[1].answer === 'yes') {
+            if (data.answer === 'yes') {
                 guests.push(file[0])
             }
         })
-
-        //console.log(guests)
 
         for (const guest of guests) {
             formatedGuests.push(trimGuestName(guest));
