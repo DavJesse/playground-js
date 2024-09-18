@@ -10,26 +10,36 @@ fs.readdir(path, (err, files) => {
     if (!err) {
 
         files.forEach((file) => {
-            const content = fs.readFile(`${path}/${file}`, 'utf8');
-            const data = JSON.parse(content);
+            fs.readFile(`${path}/${file}`, 'utf8', (err, content) => {
+                if (err) {
+                    console.error(err.message)
+                    process.exit(1);
+                }
 
-            if (data.answer === 'yes') {
-                guests.push(file[0])
-            }
-        })
+                try {
+                    const data = JSON.parse(content);
+        
+                    if (data.answer === 'yes') {
+                        guests.push(file[0])
+                    }
+                } catch (parseErr) {
+                    console.error('Erro parsing: ', file, parseErr.message);
+                }
 
-        for (const guest of guests) {
-            formatedGuests.push(trimGuestName(guest));
-        }
+                if (guests.length > 0) {
+                    guests.forEach((guest) => {
+                        formatedGuests.push(trimGuestName(guest));
+                    });
 
-        fs.writeFile('vip.txt', formatedGuests.join('\n'), 'utf8', (err) => {
-            if (err) {
-                console.error(err.message)
-                process.exit(1);
-            }
-        });
-
-
+                    fs.writeFile('vip.txt', formatedGuests.join('\n'), 'utf8', (err) => {
+                        if (err) {
+                            console.error(err.message)
+                            process.exit(1);
+                        }
+                    });
+                }
+            });
+        });     
 
     } else {
         console.error(err.message);
