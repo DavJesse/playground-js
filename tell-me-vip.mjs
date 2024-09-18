@@ -20,7 +20,7 @@ try {
     result.sort()
 
     for (let i = 0; i < result.length; i++) {
-        list += `${i++}. ${result[i]}`;
+        list += `${i+1}. ${result[i]}`;
         if (i < result.length - 1) {
             list += "\n";
         }
